@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: uber-python-app
+ labels:
+  app: uber-python-app
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: uber-python-app
+ template:
+  metadata:
+   labels:
+    app: uber-python-app
+  spec:
+   imagePullSecrets:
+    - name: [aws-registry-key] # secret key for k8s to pull image from AWS ECR Repo
+   containers:
+    - name: uber-python-app
+      image: [90452461819.dkr.ecr.us-east-1.amazonaws.com/uber-python-app]: $IMAGE_NAME # ECR Repo Details
+      imagePullPolicy: Always
+      ports:
+       - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: uber-python-app
+spec:
+ selector:
+  app: uber-python-app
+ ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
