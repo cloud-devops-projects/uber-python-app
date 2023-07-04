@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage("increment version") {
             steps {
-                script { # setup.py file}
+                script {
+                    echo "incrementing app version"
+                }
             }
         }
         stage("testing application") {
