@@ -1,7 +1,7 @@
 A CI/CD pipeline for Uber Python application--[Jenkinsfile](https://github.com/cloud-devops-projects/uber-python-app/blob/k8s-update/Jenkinsfile).
 ==============================
 
-1. Enabled artifact-file and docker image versioning.
+1. Tested uber python application.
 
 2. Built an artifact file of the application using python/pip commands in Jenkins.
 
