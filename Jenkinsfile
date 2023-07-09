@@ -25,31 +25,31 @@ pipeline {
                 }
             }
         }
-        stage("build docker image and deploy to AWS ECR Repo") {
-            environment {
-                IMAGE_NAME = "$BUILD_NUMBER"
-            }
-            steps {
-                script {
-                    echo "building the docker image..."
-                    sh 'cp Dockerfile build/'
-                    withCredentials([usernamePassword(credentialsId: 'ecr-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                        sh "docker build -t AWS-ECR-Repo/uber-python-app:$IMAGE_NAME build/"
-                        sh "echo $PASS | docker login -u $USER --password-stdin AWS-ECR-Repo"
-                        sh 'docker push AWS-ECR-Repo/uber-python-app:$IMAGE_NAME'
+        //stage("build docker image and deploy to AWS ECR Repo") {
+        //    environment {
+        //        IMAGE_NAME = "$BUILD_NUMBER"
+        //    }
+        //    steps {
+        //        script {
+        //            echo "building the docker image..."
+        //            sh 'cp Dockerfile build/'
+        //            withCredentials([usernamePassword(credentialsId: 'ecr-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        //                sh "docker build -t AWS-ECR-Repo/uber-python-app:$IMAGE_NAME build/"
+        //                sh "echo $PASS | docker login -u $USER --password-stdin AWS-ECR-Repo"
+        //                sh 'docker push AWS-ECR-Repo/uber-python-app:$IMAGE_NAME'
                     }
                 }
             }
         }
-        stage("deploy to k8s cluster") {
-            steps {
-                environment {
-                AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
-                AWS_SECRET_ACCESS_KEY = credentials('jenkins_secret_access_key')
-                AWS_REGION = credentials('jenkins_aws_region')
-                script {
-                    echo 'deploying docker image to EKS Cluster...'
-                    sh ' kubectl apply -f kubernetes/uber-python-app.yml'
+        //stage("deploy to k8s cluster") {
+        //    steps {
+        //        environment {
+        //        AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
+        //        AWS_SECRET_ACCESS_KEY = credentials('jenkins_secret_access_key')
+        //        AWS_REGION = credentials('jenkins_aws_region')
+        //        script {
+        //            echo 'deploying docker image to EKS Cluster...'
+        //            sh ' kubectl apply -f kubernetes/uber-python-app.yml'
                 }
             }
         }
