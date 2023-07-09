@@ -18,7 +18,7 @@ spec:
     - name: [aws-registry-key] # secret key for k8s to pull image from AWS ECR Repo
    containers:
     - name: uber-python-app
-      image: [90452461819.dkr.ecr.us-east-1.amazonaws.com/uber-python-app]: $IMAGE_NAME # ECR Repo Details
+      image: AWS-ECR-Repo:$IMAGE_NAME # AWS ECR Repo Details
       imagePullPolicy: Always
       ports:
        - containerPort: 5000
