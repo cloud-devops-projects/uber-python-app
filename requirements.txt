@@ -2,7 +2,7 @@ Flask
 Jinja2
 MarkupSafe
 Werkzeug
-gnureadline
+pyreadline
 itsdangerous
 rauth
 requests

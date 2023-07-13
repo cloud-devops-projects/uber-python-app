@@ -17,8 +17,6 @@ pipeline {
                     echo "building uber python application..."
                     sh 'mkdir build'
                     sh 'cp -R src/* build/'
-                    sh 'cp requirements.txt build/'
-                    sh 'cp app.py build/'
                     sh 'python -m venv build/venv'
                     sh 'source build/venv/bin/activate && pip install -r build/requirements.txt'
                     sh 'source build/venv/bin/activate && pyinstaller --onefile --distpath build/dist/ app.py'        
@@ -32,7 +30,6 @@ pipeline {
         //    steps {
         //        script {
         //            echo "building the docker image..."
-        //            sh 'cp Dockerfile build/'
         //            withCredentials([usernamePassword(credentialsId: 'ecr-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         //                sh "docker build -t AWS-ECR-Repo/uber-python-app:$IMAGE_NAME build/"
         //                sh "echo $PASS | docker login -u $USER --password-stdin AWS-ECR-Repo"
