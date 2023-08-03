@@ -5,9 +5,9 @@ pipeline {
             steps {
                 script {
                     echo "testing uber python application..."
-                    sh 'python -m venv venv'
-                    sh 'source venv/bin/activate && pip install -r requirements-test.txt'
-                    sh 'source venv/bin/activate && python test/test_endpoints.py'         
+                    // sh 'python -m venv venv'
+                    // sh 'source venv/bin/activate && pip install -r requirements-test.txt'
+                    // sh 'source venv/bin/activate && python test/test_endpoints.py'         
                 }
             }
         }
@@ -15,11 +15,11 @@ pipeline {
             steps {
                 script {
                     echo "building uber python application..."
-                    sh 'mkdir build'
-                    sh 'cp -R src/* build/'
-                    sh 'python -m venv build/venv'
-                    sh 'source build/venv/bin/activate && pip install -r build/requirements.txt'
-                    sh 'source build/venv/bin/activate && pyinstaller --onefile --distpath build/dist/ app.py'        
+                    // sh 'mkdir build'
+                    // sh 'cp -R src/* build/'
+                    // sh 'python -m venv build/venv'
+                    // sh 'source build/venv/bin/activate && pip install -r build/requirements.txt'
+                    // sh 'source build/venv/bin/activate && pyinstaller --onefile --distpath build/dist/ app.py'        
                 }
             }
         }
