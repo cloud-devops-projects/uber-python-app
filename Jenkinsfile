@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     echo "building uber python application..."
-                    echo "ok"
+                    echo "okay"
                     // sh 'mkdir build'
                     // sh 'cp -R src/* build/'
                     // sh 'python -m venv build/venv'
