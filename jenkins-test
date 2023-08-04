@@ -1,1 +1,14 @@
-echo "hello python project"
+pipeline {
+    agent any
+
+    stages {
+        stage('playground Stage') {
+            steps {
+            script
+               {
+                   sh 'python3 --version'
+               }
+            }
+        }
+    }
+}
