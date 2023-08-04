@@ -1,2 +1,1 @@
-sh 'python3 --version'
-sh 'pip --version'
+echo "hello python project"
