@@ -1,2 +1,2 @@
-python3 --version
-pip --version
+sh 'python3 --version'
+sh 'pip --version'
